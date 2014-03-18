@@ -17,10 +17,13 @@ define(function(require, exports, module) {
 	};
 
 	function _create(){
-		for (var i = 10 - 1; i >= 0; i--) {
+		var colors = ["rgba(137,232,144,1)", "#975db5", "#89bbff", "#ea5d45", "#e7dd00"];
+
+		for (var i = 20 - 1; i >= 0; i--) {
 			var surface = new Surface({
-				content: "SubView",
-				size: [300,200]
+				size: [80,80],
+				content: "<h1>:-)</h1>",
+				properties: {borderRadius: "40px", backgroundColor: colors[Math.round(Math.random()*4)], textAlign:"center", boxShadow: "10px 10px 10px rgba(0,0,0,.8)"}
 			});
 
 			var x = Math.random()* 2 * window.innerWidth - window.innerWidth;
@@ -43,6 +46,11 @@ define(function(require, exports, module) {
 
 	}//end ceate
 
+	// SubView.prototype.render = function(){
+	// 	var spec = [];
+
+	// 	return spec;
+	// }
 
 
 
