@@ -10,21 +10,14 @@ define(function(require, exports, module) {
 
         var mainContext = Engine.createContext({debug:true});
 
-        mainContext.toggleDebugRenderTree();
+
         Timer.setClockSpeed(.1);
         Timer.pause();
 
 
         mainContext.on("debug.renderTree", function(renderTree){
-                //var extensionID = "bmglankdlppinplaejhgnifonihdjbeb";
-                console.log(renderTree);
-                //Engine.setOptions({runLoop: false});
-                // chrome.runtime.sendMessage(extensionID,{renderResult: renderResult}, function(response){
-                //     if(response && response.success){
-                //         //stop the engine rendering
-                //         Famous.setOptions({runLoop: false});
-                //     }
-                // });
+                //Here we can monitor the render tree
+                //console.log(renderTree);
         });
 
 
