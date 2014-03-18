@@ -11,14 +11,14 @@ define(function(require, exports, module) {
         var mainContext = Engine.createContext({debug:true});
 
         mainContext.toggleDebugRenderTree();
+        Timer.setClockSpeed(.1);
+        Timer.pause();
 
 
         mainContext.on("debug.renderTree", function(renderTree){
                 //var extensionID = "bmglankdlppinplaejhgnifonihdjbeb";
                 console.log(renderTree);
-                
-                Timer.pause();
-                Engine.setOptions({runLoop: false});
+                //Engine.setOptions({runLoop: false});
                 // chrome.runtime.sendMessage(extensionID,{renderResult: renderResult}, function(response){
                 //     if(response && response.success){
                 //         //stop the engine rendering
@@ -34,8 +34,8 @@ define(function(require, exports, module) {
                 properties: {backgroundColor:"orange"}
         });
         stepSurface.on("click", function(){
-                Timer.increment(20);
-                Engine.step();
+                Timer.resume();
+                Engine.setOptions({runLoop: true});
         });
 
 
