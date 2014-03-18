@@ -25,7 +25,7 @@ define(function(require, exports, module) {
 
 		for (var i = 10 - 1; i >= 0; i--) {
 			var surface = new Surface({
-				content: "<img src='../assets/curve.png'/>",
+				content: "<img src='../assets/famous_symbol_transparent.png'/>",
 				size: [300,200]
 			});
 

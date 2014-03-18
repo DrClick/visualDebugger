@@ -16,7 +16,7 @@ define(function(require, exports, module) {
         var isLoggedRenderTree = false;
 
         //slow things down
-        Clock.setClockSpeed(.5);
+        Clock.setClockSpeed(1);
 
 
         mainContext.on("debug.renderTree", function(renderTree){
