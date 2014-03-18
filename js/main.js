@@ -9,7 +9,7 @@ define(function(require, exports, module) {
 
         var mainContext = Engine.createContext({debug:true});
 
-        mainContext.toggleDebugRenderTree();
+        //mainContext.toggleDebugRenderTree();
 
 
         mainContext.on("debug.renderTree", function(renderTree){
