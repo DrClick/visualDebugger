@@ -1,7 +1,7 @@
 define(function(require, exports, module) {
 
 	function RenderTreeVisualizer(renderTree){
-		this.renderTree = renderTree;
+		this.renderTree = [].concat(renderTree);
 		this.outputTree = "";
 	}
 
@@ -19,7 +19,7 @@ define(function(require, exports, module) {
 		var html = "";
 		if(node instanceof Array){
 			if(node.name){
-				html += "<h3>" + node.name + "</h2>";
+				html += "<span class='namedNode'>" + node.name + "</span>";
 			}
 			html += "<ul>";
 			for (var i = 0; i < node.length; i++) {
@@ -30,21 +30,49 @@ define(function(require, exports, module) {
 
 
 		else if (typeof(node.target) == "number"){
-			html = "<h1>Modifier: <code>" + JSON.stringify(node.transform) + "</code></h1>";
+			html += "<span class='size'>Size: " + _prettifyArray(node.size) + "</span>";
+			html += "<span class='opacity'>Opacity: " + node.opacity + "</span>";
+			html += "<span class='origin'>Origin: " + _prettifyArray(node.origin) + "</span>";
+			html += "<span class='modifier'>Modifier: " + _prettifyTansform(node.transform) + "</span>";
 			html += "<ul><li>";
-			html += "<h3>Surface: " + node.target + "</h3></li></ul>";
+			html += "<span class='surface'>Surface: " + node.target + "</span></li></ul>";
 		}
 
 
 
 		else{
 			html = "";
-			html += "<h1>Modifier: <code>" + JSON.stringify(node.transform) + "</code></h1>";
+			html += "<span class='size'>Size: " + _prettifyArray(node.size) + "</span>";
+			html += "<span class='opacity'>Opacity: " + node.opacity + "</span>";
+			html += "<span class='origin'>Origin: " + _prettifyArray(node.origin) + "</span>";
+			html += "<span class='modifier'>Modifier: " + _prettifyTansform(node.transform) + "</span>";
 			html += "<ul><li>";
 			html += _getNodeHTML(node.target)+ "</li>";
 			html += "</ul>";
 		}
 
+		return html;
+	}
+
+
+	function _prettifyTansform(transformMatrix){
+		var transform =  [].concat(transformMatrix);//make a copy
+		var html = "<table>";
+		for (var i = 0; i < 4; i++) {
+			var row = "<tr><td>@0</td><td>@1</td><td>@2</td><td>@3</td></tr>";
+			for (var j = 0; j < 4; j++) {
+				 row = row.replace("@"+j, Math.round(transform.shift() * 1000)/1000);
+			};
+			html += row;
+		}
+		html += "</table>"
+		return html;
+	}
+
+	function _prettifyArray(array){
+		var html = "<code>";
+		html += JSON.stringify(array);
+		html += "</code>"
 		return html;
 	}
 
