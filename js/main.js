@@ -3,18 +3,21 @@ define(function(require, exports, module) {
         var Surface = require('famous/core/Surface');
         var Modifier = require("famous/core/Modifier");
         var Transform = require("famous/core/Transform");
+        var Timer = require("famous/utilities/Timer");
 
         var TestView = require("app/views/TestView");
 
 
         var mainContext = Engine.createContext({debug:true});
 
-        //mainContext.toggleDebugRenderTree();
+        mainContext.toggleDebugRenderTree();
 
 
         mainContext.on("debug.renderTree", function(renderTree){
                 //var extensionID = "bmglankdlppinplaejhgnifonihdjbeb";
                 console.log(renderTree);
+                
+                Timer.pause();
                 Engine.setOptions({runLoop: false});
                 // chrome.runtime.sendMessage(extensionID,{renderResult: renderResult}, function(response){
                 //     if(response && response.success){
@@ -26,11 +29,12 @@ define(function(require, exports, module) {
 
 
         var stepSurface = new Surface({
-                content: "NEXT",
+                content: "Skip 200ms",
                 size: [100,50],
                 properties: {backgroundColor:"orange"}
         });
         stepSurface.on("click", function(){
+                Timer.increment(20);
                 Engine.step();
         });
 
@@ -43,15 +47,11 @@ define(function(require, exports, module) {
 
         var testView = new TestView();
 
-        testView.on("click", function(){
-                mainContext.toggleDebugRenderTree();
-        });
-
         
         mainContext.setPerspective(3000);
         mainContext.add(new Modifier({
                 origin:[.5,.5],
-                transform: Transform.translate(0,0,1000)
+                transform: Transform.translate(0,0,2000)
         })).add(stepSurface);
         mainContext.add(modifier).add(testView);
         
