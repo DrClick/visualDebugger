@@ -22,15 +22,10 @@ define(function(require, exports, module) {
 		for (var i = 30 - 1; i >= 0; i--) {
 			var surface = new Surface({
 				size: [80,80],
+				classes: ['dot'],
 				properties: {
-					borderRadius: "40px", 
-					backgroundColor: colors[Math.round(Math.random()*4)],
-					backgroundImage: "url(../assets/famous_symbol_transparent.png)",
-					backgroundSize: "60px 60px",
-					backgroundPosition: "center center",
-					backgroundRepeat: "no-repeat",
-					textAlign:"center", 
-					boxShadow: "10px 10px 10px rgba(0,0,0,.8)"}
+					backgroundColor: colors[Math.round(Math.random()*4)]
+				}
 			});
 
 			var x = Math.random()* 2 * window.innerWidth - window.innerWidth;
@@ -39,7 +34,8 @@ define(function(require, exports, module) {
 
 			var modifier = new Modifier({
 				transform: Transform.translate(x,y,z),
-				origin: [.5,.5]
+				origin: [.5,.5],
+				size: [80, 80]
 			});
 
 

@@ -23,11 +23,24 @@ define(function(require, exports, module) {
                 //Here we can monitor the render tree
                 //debugger
                 if(!isLoggedRenderTree){
-                        var renderTreeVisualizer = new RenderTreeVisualizer(renderTree);
-                        console.log(renderTreeVisualizer.getTree());
-                        console.log(renderTree);
                         isLoggedRenderTree = true;
-                }       
+                        var renderTreeVisualizer = new RenderTreeVisualizer(renderTree);
+                        var renderTreeHTML = renderTreeVisualizer.getTree();
+
+                        var sideBar = document.createElement("div");
+                        sideBar.style.position = "absolute";
+                        sideBar.style.zPos = 1000;
+                        sideBar.style.width = "40%";
+                        sideBar.style.height = window.innerHeight;
+                        sideBar.style.boxShadow = "3px 3px 3px rgba(0,0,0,.3)";
+                        sideBar.style.backgroundColor = "rgba(0,0,0,.5)";
+                        sideBar.style.overflow = "scroll";
+
+                        sideBar.innerHTML = renderTreeHTML;
+                        document.getElementsByTagName("body")[0].appendChild(sideBar); 
+
+                }
+                
         });
 
 
