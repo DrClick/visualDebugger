@@ -19,7 +19,7 @@ define(function(require, exports, module) {
 	function _create(){
 		var colors = ["rgba(137,232,144,1)", "#975db5", "#89bbff", "#ea5d45", "#e7dd00"];
 
-		for (var i = 30 - 1; i >= 0; i--) {
+		for (var i = 3 - 1; i >= 0; i--) {
 			var surface = new Surface({
 				size: [80,80],
 				classes: ['dot'],

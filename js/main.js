@@ -5,43 +5,18 @@ define(function(require, exports, module) {
         var Transform = require("famous/core/Transform");
         var Clock = require("famous/utilities/Clock");
 
+        //required for debugging
+        var Debugger = require("famous/utilities/Debugger");
+
+
         var TestView = require("app/views/TestView");
-        var RenderTreeVisualizer = require("app/RenderTreeVisualizer");
 
 
         var mainContext = Engine.createContext({debug:true});
-
-
-        var isPaused = false;
-        var isLoggedRenderTree = false;
+        var famousDebugger = new Debugger(mainContext);
 
         //slow things down
-        Clock.setClockSpeed(1);
-
-
-        mainContext.on("debug.renderTree", function(renderTree){
-                //Here we can monitor the render tree
-                //debugger
-                if(!isLoggedRenderTree){
-                        isLoggedRenderTree = true;
-                        var renderTreeVisualizer = new RenderTreeVisualizer(renderTree);
-                        var renderTreeHTML = renderTreeVisualizer.getTree();
-
-                        var sideBar = document.createElement("div");
-                        sideBar.style.position = "absolute";
-                        sideBar.style.zPos = 1000;
-                        sideBar.style.width = "40%";
-                        sideBar.style.height = window.innerHeight;
-                        sideBar.style.boxShadow = "3px 3px 3px rgba(0,0,0,.3)";
-                        sideBar.style.backgroundColor = "rgba(0,0,0,.5)";
-                        sideBar.style.overflow = "scroll";
-
-                        sideBar.innerHTML = renderTreeHTML;
-                        document.getElementsByTagName("body")[0].appendChild(sideBar); 
-
-                }
-                
-        });
+        Clock.setClockSpeed(4);
 
 
         var modifier = new Modifier({
@@ -59,17 +34,17 @@ define(function(require, exports, module) {
 
 
         //animate the entire scene
-        modifier.setTransform(Transform.rotate(0,0,0), {duration: 3000});
+        modifier.setTransform(Transform.rotate(0,0,0), {duration: 30000});
 
 
 
+        //pause the scene
+        var isPaused = false;
         Engine.on("click", function(){
                 isPaused = !isPaused;
                 if(!isPaused) {Engine.unpause()}
-                else {Engine.pause()}
+                        else {Engine.pause()}
 
-                
-        });
 
-        window.Famous = mainContext;
+                });
 });

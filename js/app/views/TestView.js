@@ -42,7 +42,7 @@ define(function(require, exports, module) {
 			var subView = new SubView();
 			
 			this._add(modifier).add(surface);
-			this._add(subView);
+			this._add(new Modifier()).add(subView);
 		}
 
 	}//end ceate
