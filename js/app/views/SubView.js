@@ -21,23 +21,21 @@ define(function(require, exports, module) {
 
 		
 		var surface = new Surface({
-			size: [400,400],
 			classes: ['dot'],
+			size: [400,400],
 			properties: {
 				backgroundColor: colors[Math.round(Math.random()*4)]
 			}
 		});
 
 		var modifier = new Modifier({
-			transform: Transform.translate(0,0,0),
-			origin: [.5,.5],
-			size: [400, 400]
+			transform: Transform.translate(0,0,0)
 		});
 
 
 
 		
-		this._add(modifier).add(surface);
+		this._add(surface);
 		
 
 	}//end ceate

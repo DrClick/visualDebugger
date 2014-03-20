@@ -30,37 +30,43 @@ define(function(require, exports, module) {
 		var subView = new SubView();
 
 
+
+
 		//create the modifiers
+		var sizeMod = new Modifier({
+			size:[400, 400],
+			name: "size mod"
+		});
+		var originMod = new Modifier({
+			origin:[.5,.5],
+			name: "origin mod"
+		});
+
 		var modX = new Modifier({
-			transform: Transform.rotate(0,rotateX.get(), 0),
-			origin: [.5,.5],
-			size:[400,400]
+			name: "rotate X mod"
 		});
 		var modY = new Modifier({
-			transform: Transform.rotate(0,0,rotateY.get()),
-			origin: [.5,.5],
-			size:[400,400]
+			name: "rotate y mod"
 		});
 		var modZ = new Modifier({
-			transform: Transform.rotate(rotateZ.get(),0, 0),
-			origin: [.5,.5],
-			size:[400,400]
+			name: "rotate z mod"
 		});
 
 
 			
-		this._add(modX).add(modY).add(modZ).add(subView);
+		this._add(originMod).add(sizeMod).add(modZ).add(subView);
 
 
 		Timer.setInterval(function(){
-			rotateX.set(rotateX.get() + .1);
-			rotateY.set(rotateY.get() + .1);
-			rotateZ.set(rotateZ.get() + .1);
+			rotateX.set(rotateX.get() + .05);
+			rotateY.set(rotateY.get() + .05);
+			rotateZ.set(rotateZ.get() + .05);
 
-			modX.setTransform(Transform.rotate(0, rotateX.get(), 0), {duration: 100});
-			modY.setTransform(Transform.rotate(0, 0, rotateY.get()), {duration: 100});
-			modZ.setTransform(Transform.rotate(rotateZ.get(), 0, 0), {duration: 100});
-		}, 100);
+			//modX.setTransform(Transform.rotate(0, rotateX.get(), 0), {duration: 100});
+			modZ.setTransform(Transform.aboutOrigin([200,200,0],Transform.rotateZ(rotateZ.get())), {duration: 100});
+			//modZ.setTransform(Transform.rotateZ(rotateZ.get()));
+			//modZ.setTransform(Transform.rotate(rotateZ.get(), 0, 0), {duration: 100});
+		}, 8);
 
 		
 

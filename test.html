@@ -81,8 +81,17 @@ ul.engineControls li{
 	margin:10px;
 }
 ul.engineControls button{
-	font-size:18px;
-	padding:10px;
+	font-size:14px;
+	padding:5px;
+}
+
+input.engineControls
+{
+	padding: 5px;
+	font-size: 14px;
+	background-color: rgba(200,200,200,.5);
+	color:white;
+
 }
 
 .leftCol{
@@ -190,7 +199,17 @@ ol.linenums {
 
 
 <div class="header">
-asdfkjasl;dfjl;kasjdfasfdasdfas
+<div class="header">
+	<ul class="engineControls">
+		<li><button id="engineControls_reload" class="engineControls">Pause</button></li>
+		<li><button id="engineControls_resume" class="engineControls">Resume</button></li>
+		<li><button id="engineControls_step" class="engineControls">Step</button></li>
+		<li><input class="engineControls" type="text" placeholder="Clock speed" id="engineControls_clockSpeed"></li>
+		<li><input class="engineControls" type="text" placeholder="Step ms" id="engineControls_stepSize"</li>
+	</ul>
+	
+	
+</div>
 </div>
 
 
