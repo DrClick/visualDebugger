@@ -10,13 +10,14 @@ define(function(require, exports, module) {
 
 
         var TestView = require("app/views/TestView");
+        var RotateView = require("app/views/RotateView");
 
 
         var mainContext = Engine.createContext({debug:true});
         var famousDebugger = new Debugger(mainContext);
 
         //slow things down
-        Clock.setClockSpeed(4);
+        Clock.setClockSpeed(1);
 
 
         var modifier = new Modifier({
@@ -26,16 +27,21 @@ define(function(require, exports, module) {
 
 
         var testView = new TestView();
+        var rotateView = new RotateView();
 
         
         mainContext.setPerspective(3000);
-        mainContext.add(modifier).add(testView);
+
         
-
-
+        ////Original Case
         //animate the entire scene
-        modifier.setTransform(Transform.rotate(0,0,0), {duration: 30000});
+        //mainContext.add(modifier).add(testView);
+        //modifier.setTransform(Transform.rotate(0,0,0), {duration: 30000});
 
+
+        //rotate case
+        mainContext.add(rotateView);
+        
 
 
         //pause the scene
