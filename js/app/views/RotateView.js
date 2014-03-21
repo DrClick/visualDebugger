@@ -58,15 +58,15 @@ define(function(require, exports, module) {
 
 
 		Timer.setInterval(function(){
-			rotateX.set(rotateX.get() + .05);
-			rotateY.set(rotateY.get() + .05);
-			rotateZ.set(rotateZ.get() + .05);
+			rotateX.set(rotateX.get() + .1);
+			rotateY.set(rotateY.get() + .1);
+			rotateZ.set(rotateZ.get() + .1);
 
 			//modX.setTransform(Transform.rotate(0, rotateX.get(), 0), {duration: 100});
-			modZ.setTransform(Transform.aboutOrigin([200,200,0],Transform.rotateZ(rotateZ.get())), {duration: 100});
+			modZ.setTransform(Transform.rotateZ(rotateZ.get()), {duration: 100});
 			//modZ.setTransform(Transform.rotateZ(rotateZ.get()));
 			//modZ.setTransform(Transform.rotate(rotateZ.get(), 0, 0), {duration: 100});
-		}, 8);
+		}, 100);
 
 		
 
