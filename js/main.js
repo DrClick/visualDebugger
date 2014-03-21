@@ -5,6 +5,8 @@ define(function(require, exports, module) {
         var Transform = require("famous/core/Transform");
         var Clock = require("famous/utilities/Clock");
 
+        
+
         //required for debugging
         var Debugger = require("famous/utilities/Debugger");
 
@@ -30,7 +32,7 @@ define(function(require, exports, module) {
         var rotateView = new RotateView();
 
         
-        mainContext.setPerspective(3000);
+        mainContext.setPerspective(1000);
 
         
         ////Original Case
@@ -39,18 +41,17 @@ define(function(require, exports, module) {
         //modifier.setTransform(Transform.rotate(0,0,0), {duration: 30000});
 
 
+        
+
+
         //rotate case
         mainContext.add(rotateView);
         
 
 
-        //pause the scene
-        var isPaused = false;
-        Engine.on("click", function(){
-                isPaused = !isPaused;
-                if(!isPaused) {Engine.unpause()}
-                        else {Engine.pause()}
+        
 
 
-                });
+
+
 });

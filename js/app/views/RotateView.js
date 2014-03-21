@@ -32,13 +32,10 @@ define(function(require, exports, module) {
 
 
 
-		//create the modifiers
-		var sizeMod = new Modifier({
-			size:[400, 400],
-			name: "size mod"
-		});
+		//create the modifierse mod"
 		var originMod = new Modifier({
 			origin:[.5,.5],
+			size: [0.00001, 1],
 			name: "origin mod"
 		});
 
@@ -54,19 +51,18 @@ define(function(require, exports, module) {
 
 
 			
-		this._add(originMod).add(sizeMod).add(modZ).add(subView);
+		this._add(originMod).add(modX).add(modY).add(modZ).add(subView);
 
 
 		Timer.setInterval(function(){
-			rotateX.set(rotateX.get() + .1);
-			rotateY.set(rotateY.get() + .1);
-			rotateZ.set(rotateZ.get() + .1);
+			rotateX.set(rotateX.get() + .001);
+			rotateY.set(rotateY.get() + .01);
+			rotateZ.set(rotateZ.get() + .05);
 
-			//modX.setTransform(Transform.rotate(0, rotateX.get(), 0), {duration: 100});
-			modZ.setTransform(Transform.rotateZ(rotateZ.get()), {duration: 100});
-			//modZ.setTransform(Transform.rotateZ(rotateZ.get()));
-			//modZ.setTransform(Transform.rotate(rotateZ.get(), 0, 0), {duration: 100});
-		}, 100);
+			modX.setTransform(Transform.rotateX(rotateX.get()));
+			modY.setTransform(Transform.rotateY(rotateY.get()));
+			modZ.setTransform(Transform.rotateZ(rotateZ.get()));
+		}, 8);
 
 		
 

@@ -20,22 +20,57 @@ define(function(require, exports, module) {
 		var colors = ["rgba(137,232,144,1)", "#975db5", "#89bbff", "#ea5d45", "#e7dd00"];
 
 		
-		var surface = new Surface({
+		var surface_front = new Surface({
 			classes: ['dot'],
 			size: [400,400],
 			properties: {
-				backgroundColor: colors[Math.round(Math.random()*4)]
+				backgroundColor: colors[Math.round(Math.random()*4)],
+				webkitBackfaceVisibility: "visible",
+				opacity: .5
 			}
 		});
 
-		var modifier = new Modifier({
-			transform: Transform.translate(0,0,0)
+		var modifier_front = new Modifier({
+			origin: [.5,.5]
 		});
 
 
+		var surface_back = new Surface({
+			classes: ['dot'],
+			size: [400,400],
+			properties: {
+				backgroundColor: colors[Math.round(Math.random()*4)],
+				webkitBackfaceVisibility: "visible",
+				opacity: .5
+			}
+		});
+
+		var modifier_back = new Modifier({
+			transform: Transform.rotateX(Math.PI/2),
+			origin: [.5,.5]
+		});
+
+
+		var surface_middle = new Surface({
+			classes: ['dot'],
+			size: [400,400],
+			properties: {
+				backgroundColor: colors[Math.round(Math.random()*4)],
+				webkitBackfaceVisibility: "visible",
+				opacity: .5
+			}
+		});
+
+		var modifier_middle = new Modifier({
+			transform: Transform.rotateY(Math.PI/2),
+			origin: [.5,.5]
+		});
+
 
 		
-		this._add(surface);
+		this._add(modifier_front).add(surface_front);
+		this._add(modifier_back).add(surface_back);
+		this._add(modifier_middle).add(surface_middle);
 		
 
 	}//end ceate
