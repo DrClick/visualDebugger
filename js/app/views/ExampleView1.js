@@ -35,7 +35,8 @@ define(function(require, exports, module) {
 
 			var modifier = new Modifier({
 				transform: Transform.translate(x,y,z),
-				origin: [.5,.5]
+				origin: [.5,.5],
+				name: "Super Awesome Modifier"
 			});
 
 

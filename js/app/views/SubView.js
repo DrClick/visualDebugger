@@ -27,7 +27,8 @@ define(function(require, exports, module) {
 				backgroundColor: colors[Math.round(Math.random()*4)],
 				webkitBackfaceVisibility: "visible",
 				opacity: .9
-			}
+			},
+			name: "Front Surface"
 		});
 
 		var modifier_front = new Modifier({
@@ -42,7 +43,8 @@ define(function(require, exports, module) {
 				backgroundColor: colors[Math.round(Math.random()*4)],
 				webkitBackfaceVisibility: "visible",
 				opacity: .9
-			}
+			},
+			name: "Back Surface"
 		});
 
 		var modifier_back = new Modifier({
@@ -58,7 +60,8 @@ define(function(require, exports, module) {
 				backgroundColor: colors[Math.round(Math.random()*4)],
 				webkitBackfaceVisibility: "visible",
 				opacity: .9
-			}
+			},
+			name: "Middle Surface"
 		});
 
 		var modifier_middle = new Modifier({
