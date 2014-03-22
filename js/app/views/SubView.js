@@ -71,6 +71,9 @@ define(function(require, exports, module) {
 		this._add(modifier_front).add(surface_front);
 		this._add(modifier_back).add(surface_back);
 		this._add(modifier_middle).add(surface_middle);
+
+
+		//pipe the events
 		
 
 	}//end ceate
