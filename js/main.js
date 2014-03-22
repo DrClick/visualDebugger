@@ -8,7 +8,7 @@ define(function(require, exports, module) {
         
 
         //required for debugging
-        var Debugger = require("famous/utilities/Debugger");
+        var Debugger = require("famous/debug/Debugger");
 
 
         var TestView = require("app/views/TestView");
@@ -16,7 +16,7 @@ define(function(require, exports, module) {
 
 
         var mainContext = Engine.createContext({debug:true});
-        var famousDebugger = new Debugger(mainContext);
+        Debugger.registerContext(mainContext);
 
         //slow things down
         Clock.setClockSpeed(1);

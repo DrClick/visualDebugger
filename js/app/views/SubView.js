@@ -26,7 +26,7 @@ define(function(require, exports, module) {
 			properties: {
 				backgroundColor: colors[Math.round(Math.random()*4)],
 				webkitBackfaceVisibility: "visible",
-				opacity: .5
+				opacity: .9
 			}
 		});
 
@@ -41,7 +41,7 @@ define(function(require, exports, module) {
 			properties: {
 				backgroundColor: colors[Math.round(Math.random()*4)],
 				webkitBackfaceVisibility: "visible",
-				opacity: .5
+				opacity: .9
 			}
 		});
 
@@ -57,7 +57,7 @@ define(function(require, exports, module) {
 			properties: {
 				backgroundColor: colors[Math.round(Math.random()*4)],
 				webkitBackfaceVisibility: "visible",
-				opacity: .5
+				opacity: .9
 			}
 		});
 

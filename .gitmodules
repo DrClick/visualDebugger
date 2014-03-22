@@ -28,3 +28,9 @@
 [submodule "js/famous/widgets"]
 	path = js/famous/widgets
 	url = git@github.com:Famous/famous-widgets.git
+[submodule "debug"]
+	path = debug
+	url = git@github.com:Famous/debug.git
+[submodule "js/famous/debug"]
+	path = js/famous/debug
+	url = git@github.com:Famous/debug.git

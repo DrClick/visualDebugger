@@ -10,6 +10,9 @@ define(function(require, exports, module) {
 	//views
 	var SubView 	= require("app/views/SubView");
 
+
+	var renderCounter = 0;
+
 	function RotateView () {
     	View.apply(this, arguments);
 	    _create.call(this);
@@ -35,17 +38,20 @@ define(function(require, exports, module) {
 		//create the modifierse mod"
 		var originMod = new Modifier({
 			origin:[.5,.5],
-			size: [0.00001, 1],
+			size: [0.0001, 0.0001],
 			name: "origin mod"
 		});
 
 		var modX = new Modifier({
+			origin:[.5,.5],
 			name: "rotate X mod"
 		});
 		var modY = new Modifier({
+			origin:[.5,.5],
 			name: "rotate y mod"
 		});
 		var modZ = new Modifier({
+			origin:[.5,.5],
 			name: "rotate z mod"
 		});
 
@@ -55,9 +61,9 @@ define(function(require, exports, module) {
 
 
 		Timer.setInterval(function(){
-			rotateX.set(rotateX.get() + .001);
+			rotateX.set(rotateX.get() + .00001);
 			rotateY.set(rotateY.get() + .01);
-			rotateZ.set(rotateZ.get() + .05);
+			rotateZ.set(rotateZ.get() + .1);
 
 			modX.setTransform(Transform.rotateX(rotateX.get()));
 			modY.setTransform(Transform.rotateY(rotateY.get()));
@@ -67,6 +73,13 @@ define(function(require, exports, module) {
 		
 
 	}//end ceate
+
+	RotateView.prototype.render = function(){
+		// renderCounter++;
+		// if(renderCounter % 100 == 0) return;
+
+		return this._node.render();
+	}
 
 
 
