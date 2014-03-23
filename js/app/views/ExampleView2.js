@@ -32,13 +32,13 @@ define(function(require, exports, module) {
 			textAlign: "center"
 		};
 
-		var surface_1 = new Surface({
+		this.surface_1 = new Surface({
 			size: [200,200],
 			properties: surfProps,
 			content: "<p>Click Me</p>"
 		});
 
-		var surface_2 = new Surface({
+		this.surface_2 = new Surface({
 			size: [200,200],
 			properties: surfProps,
 			content: "<p>Click Me</p>"
@@ -48,20 +48,22 @@ define(function(require, exports, module) {
 		//add them to the render node
 		this._add(new Modifier({origin:[.5,0]})).add(header_surface);
 		this._add(new Modifier({origin:[.5,.5], transform: Transform.translate(-200,0,0)}))
-			.add(surface_1);
+			.add(this.surface_1);
 		this._add(new Modifier({origin:[.5,.5], transform: Transform.translate(200,0,0)}))
-			.add(surface_2);
+			.add(this.surface_2);
 
 		//pipe events
-		surface_1.pipe(this._eventInput);
-		surface_2.pipe(this._eventOutput);
+		this.surface_1.pipe(this._eventOutput);
+		//surface_2.pipe(this._eventOutput);
 
-		surface_1.on("click", function(){console.log("clicked on surface 1")});
-		surface_2.on("click", function(){console.log("clicked on surface 2")});
+		this.surface_1.on("click", function(){console.log("clicked on surface 1")});
+		this.surface_2.on("click", function surface2ClickHandler(){console.log("clicked on surface 2")});
 	}
 
 	function _handleEvents(){
-		this.on("click", function(event){console.log(event)});
+		this.on("click", function(event){
+			this.surface_2.emit("click", event)
+		});
 	}
 
 	

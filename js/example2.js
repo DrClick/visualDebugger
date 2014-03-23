@@ -26,7 +26,7 @@ define(function(require, exports, module) {
         mainContext.add(modifier).add(view);
 
 
-        view.on("click", function(){
+        view.on("click", function helloWorldClickHandler(){
                 view.trigger("Hello.World");
         })
         
