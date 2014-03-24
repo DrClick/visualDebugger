@@ -49,8 +49,7 @@ define(function(require, exports, module) {
 		this._add(new Modifier({origin:[.5,0]})).add(header_surface);
 		this._add(new Modifier({origin:[.5,.5], transform: Transform.translate(-200,0,0)}))
 			.add(this.surface_1);
-		this._add(new Modifier({origin:[.5,.5], transform: Transform.translate(200,0,0)}))
-			.add(this.surface_2);
+		this._add(this.surface_2);//added without a modifier
 
 		//pipe events
 		this.surface_1.pipe(this._eventOutput);
