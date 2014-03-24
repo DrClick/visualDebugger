@@ -34,3 +34,6 @@
 [submodule "js/famous/debug"]
 	path = js/famous/debug
 	url = git@github.com:Famous/debug.git
+[submodule "js/Directed-Graph"]
+	path = js/Directed-Graph
+	url = https://github.com/lu1s/Directed-Graph.git
