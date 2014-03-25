@@ -37,3 +37,6 @@
 [submodule "js/Directed-Graph"]
 	path = js/Directed-Graph
 	url = https://github.com/lu1s/Directed-Graph.git
+[submodule "js/dracula"]
+	path = js/dracula
+	url = git@github.com:DrClick/dracula.git

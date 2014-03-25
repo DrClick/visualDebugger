@@ -55,12 +55,12 @@ define(function(require, exports, module) {
 		this.surface_1.pipe(this._eventOutput);
 		//surface_2.pipe(this._eventOutput);
 
-		this.surface_1.on("click", function(){console.log("clicked on surface 1")});
+		this.surface_1.on("click", function suface1ClickHandler(){console.log("clicked on surface 1")});
 		this.surface_2.on("click", function surface2ClickHandler(){console.log("clicked on surface 2")});
 	}
 
 	function _handleEvents(){
-		this.on("click", function(event){
+		this.on("click", function exampleView2ClickHandler(event){
 			this.surface_2.emit("click", event)
 		});
 	}

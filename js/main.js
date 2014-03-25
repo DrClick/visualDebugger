@@ -1,11 +1,11 @@
 define(function(require, exports, module) {
+
+        
         var Engine = require('famous/core/Engine');
         var Surface = require('famous/core/Surface');
         var Modifier = require("famous/core/Modifier");
         var Transform = require("famous/core/Transform");
         var Clock = require("famous/utilities/Clock");
-
-        
 
         //required for debugging
         var Debugger = require("famous/debug/Debugger");
