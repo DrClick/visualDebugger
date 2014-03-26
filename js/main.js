@@ -28,7 +28,7 @@ define(function(require, exports, module) {
         });
 
 
-        var testView = new TestView();
+        //var testView = new TestView();
         var rotateView = new RotateView();
 
         

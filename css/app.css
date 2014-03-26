@@ -10,3 +10,8 @@ html {
 	background-repeat: no-repeat;
 	text-align:center;
 }
+
+.inspected{
+	border: 1px solid rgba(250,92,79,.8);
+	background-color: rgba(250,92,79,.3);
+}
