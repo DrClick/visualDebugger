@@ -55,7 +55,7 @@
           background-color: rgba(200,200,200,.05);
       }
 
-      .origin, .size, .opacity, .rotation, .position, .skew{
+      .origin, .size, .opacity, .rotation, .position, .skew, .scale{
           display:inline-block;
           width: 100px;
           margin-left: 5px;
@@ -159,6 +159,64 @@
       }
 
 
+      .interactiveModifier{
+        display:none;
+        position: fixed;
+        background-color: rgba(67,67,67,.9);
+        width: 420px;
+        border-radius:10px;
+        box-shadow: 3px 3px 3px rgba(0,0,0,.3);
+        top: 5px;
+        left:50%;
+        margin-left:-25%;
+      }
+      .interactiveModifier input{
+        width: 80px;
+        background-color: rgba(255,255,255,.1);
+        margin:2px;
+        border: none;
+        padding: 5px;
+        font-size: 18px;
+        color: #fa5c4f;
+        border-radius:5px;
+      }
+      .interactiveModifier .inputGroup *{
+        vertical-align: middle;
+      }
+      .interactiveModifier .inputType{
+        display: block;
+        width: 500px;
+      }
+      .interactiveModifier label{
+        display: inline-block;
+        width: 80px;
+      }
+      .interactiveModifier .inputGroup{
+        color: rgba(51,204,255,.3);
+        font-size: 35px;
+      }
+
+      .interactiveModifier li{
+        list-style: none;
+      }
+
+      .interactiveModifier button{
+        width: 30px;
+        height: 30px;
+        background-color: rgba(255,255,255,.1);
+        margin:9px;
+        border: none;
+        padding: 5px;
+        font-size: 14px;
+        color: white;
+        border-radius:5px;
+        float:right;
+      }
+
+      .interactiveModifier li:last-child{
+        margin-bottom:20px;
+      }
+
   </style>
 </head>
 <body>
@@ -167,10 +225,200 @@
 
 
 
+<ul class="interactiveModifier" data-modifierId=''>
+  <li><button>X</button><div class="clear"></div></li>
+  <li class='inputType' data-type='opacity'>
+    <label>Opacity:</label><span class='inputGroup'>[<input type='number' step="1" min="0" max="100"/>]</span>
+  </li>
+  <li class='inputType' data-type='size'>
+    <label>Size:</label><span class='inputGroup'>[<input type='number'/>,<input type='number'/>]</span>
+  </li>
+  <li class='inputType' data-type='origin'>
+    <label>Origin:</label><span class='inputGroup'>[<input type='number' step='.5' min='0' max='1'/>,<input type='number'  step='.5' min='0' max='1'/>]</span></li>
+  <li class='inputType' data-type='position'><label>Position:</label><span class='inputGroup'>[<input type='number' step=".01"/>,<input type='number' step=".01"/>,<input type='number'/>]</span></li>
+  <li class='inputType' data-type='rotation'><label>Rotation:</label><span class='inputGroup'>[<input type='number' step=".001"/>,<input type='number' step=".001"/>,<input type='number' step=".001"/>]</span></li>
+  <li class='inputType' data-type='skew'><label>Skew:</label><span class='inputGroup'>[<input type='number' step=".01"/>,<input type='number' step=".01"/>,<input type='number' step=".01"/>]</span></li>
+  <li class='inputType' data-type='scale'>
+    <label>Scale:</label><span class='inputGroup'>[<input type='number' step=".1"/>,<input type='number' step=".1"/>,<input type='number' step=".1"/>]
+    </span>
+  </li>
+</ul>
 
 
 
-<ul class='debugger'><li><span class='namedNode'>origin mod</span><span class='modifier'>Modifier: <a id='node_0'></a></span><div class='leftCol'><div class='transform'><label class='size'>Size: </label><code>[0,0]</code><br/><label class='opacity'>Opacity:  </label><code>1</code><br/><label class='origin'>Origin:  </label><code>[0.5,0.5]</code><br/><label class='position'>Position:  </label><br/><label class='rotation'>Rotation:  </label><br/><label class='rotation'>Skew:  </label><br/><label class='rotation'>Scale:  </label><code>[1,1,1]</code></div></div><div class='rightCol'><table><tr><td>1</td><td>0</td><td>0</td><td>0</td></tr><tr><td>0</td><td>1</td><td>0</td><td>0</td></tr><tr><td>0</td><td>0</td><td>1</td><td>0</td></tr><tr><td>0</td><td>0</td><td>0</td><td>1</td></tr></table></div><div class='clear singleItem'><span class='namedNode'>rotate X mod</span><span class='modifier'>Modifier: <a id='node_1'></a><a id='parent_node_0' class='parent' href='#node_0'>&uarr;</a></span><div class='leftCol'><div class='transform'><label class='size'>Size: </label><br/><label class='opacity'>Opacity:  </label><code>1</code><br/><label class='origin'>Origin:  </label><code>[0.5,0.5]</code><br/><label class='position'>Position:  </label><br/><label class='rotation'>Rotation:  </label><code>[0.052,0,0]</code><br/><label class='rotation'>Skew:  </label><br/><label class='rotation'>Scale:  </label><code>[1,1,1]</code></div></div><div class='rightCol'><table><tr><td>1</td><td>0</td><td>0</td><td>0</td></tr><tr><td>0</td><td>0.999</td><td>0.052</td><td>0</td></tr><tr><td>0</td><td>-0.052</td><td>0.999</td><td>0</td></tr><tr><td>0</td><td>0</td><td>0</td><td>1</td></tr></table></div><div class='clear singleItem'><span class='namedNode'>rotate y mod</span><span class='modifier'>Modifier: <a id='node_2'></a><a id='parent_node_1' class='parent' href='#node_1'>&uarr;</a></span><div class='leftCol'><div class='transform'><label class='size'>Size: </label><br/><label class='opacity'>Opacity:  </label><code>1</code><br/><label class='origin'>Origin:  </label><code>[0.5,0.5]</code><br/><label class='position'>Position:  </label><br/><label class='rotation'>Rotation:  </label><code>[0,2.155,0]</code><br/><label class='rotation'>Skew:  </label><br/><label class='rotation'>Scale:  </label><code>[1,1,1]</code></div></div><div class='rightCol'><table><tr><td>-0.551</td><td>0</td><td>-0.834</td><td>0</td></tr><tr><td>0</td><td>1</td><td>0</td><td>0</td></tr><tr><td>0.834</td><td>0</td><td>-0.551</td><td>0</td></tr><tr><td>0</td><td>0</td><td>0</td><td>1</td></tr></table></div><div class='clear singleItem'><span class='namedNode'>rotate z mod</span><span class='modifier'>Modifier: <a id='node_3'></a><a id='parent_node_2' class='parent' href='#node_2'>&uarr;</a></span><div class='leftCol'><div class='transform'><label class='size'>Size: </label><br/><label class='opacity'>Opacity:  </label><code>1</code><br/><label class='origin'>Origin:  </label><code>[0.5,0.5]</code><br/><label class='position'>Position:  </label><br/><label class='rotation'>Rotation:  </label><code>[0,0,2.696]</code><br/><label class='rotation'>Skew:  </label><br/><label class='rotation'>Scale:  </label><code>[1,1,1]</code></div></div><div class='rightCol'><table><tr><td>-0.902</td><td>0.431</td><td>0</td><td>0</td></tr><tr><td>-0.431</td><td>-0.902</td><td>0</td><td>0</td></tr><tr><td>0</td><td>0</td><td>1</td><td>0</td></tr><tr><td>0</td><td>0</td><td>0</td><td>1</td></tr></table></div><div class='clear singleItem'><span class='namedNode'>SubView</span><ul><li><span class='modifier'>Modifier: <a id='node_4'></a><a id='parent_node_3' class='parent' href='#node_3'>&uarr;</a></span><div class='leftCol'><div class='transform'><label class='size'>Size: </label><br/><label class='opacity'>Opacity:  </label><code>1</code><br/><label class='origin'>Origin:  </label><code>[0.5,0.5]</code><br/><label class='position'>Position:  </label><br/><label class='rotation'>Rotation:  </label><br/><label class='rotation'>Skew:  </label><br/><label class='rotation'>Scale:  </label><code>[1,1,1]</code></div></div><div class='rightCol'><table><tr><td>1</td><td>0</td><td>0</td><td>0</td></tr><tr><td>0</td><td>1</td><td>0</td><td>0</td></tr><tr><td>0</td><td>0</td><td>1</td><td>0</td></tr><tr><td>0</td><td>0</td><td>0</td><td>1</td></tr></table></div><div class='clear'></div><span class='surface' id='surface_0'>Surface: </span><pre class='prettyprint lang-js'>{
+
+<ul class='debugger'>
+   <li>
+      <span class='namedNode'>origin mod</span><span class='modifier' id='modifier_4'>Modifier: <a id='node_0'></a></span>
+      <div class='leftCol'>
+         <div class='transform'><label class='size'>Size: </label><code>[0,0]</code><br/><label class='opacity'>Opacity:  </label><code>1</code><br/><label class='origin'>Origin:  </label><code>[0.5,0.5]</code><br/><label class='position'>Position:  </label><br/><label class='rotation'>Rotation:  </label><br/><label class='rotation'>Skew:  </label><br/><label class='rotation'>Scale:  </label><code>[1,1,1]</code></div>
+      </div>
+      <div class='rightCol'>
+         <table>
+            <tr>
+               <td>1</td>
+               <td>0</td>
+               <td>0</td>
+               <td>0</td>
+            </tr>
+            <tr>
+               <td>0</td>
+               <td>1</td>
+               <td>0</td>
+               <td>0</td>
+            </tr>
+            <tr>
+               <td>0</td>
+               <td>0</td>
+               <td>1</td>
+               <td>0</td>
+            </tr>
+            <tr>
+               <td>0</td>
+               <td>0</td>
+               <td>0</td>
+               <td>1</td>
+            </tr>
+         </table>
+      </div>
+      <div class='clear singleItem'>
+         <span class='namedNode'>rotate X mod</span><span class='modifier' id='modifier_5'>Modifier: <a id='node_1'></a><a id='parent_node_0' class='parent' href='#node_0'>&uarr;</a></span>
+         <div class='leftCol'>
+            <div class='transform'><label class='size'>Size: </label><br/><label class='opacity'>Opacity:  </label><code>1</code><br/><label class='origin'>Origin:  </label><code>[0.5,0.5]</code><br/><label class='position'>Position:  </label><br/><label class='rotation'>Rotation:  </label><code>[0.014,0,0]</code><br/><label class='rotation'>Skew:  </label><br/><label class='rotation'>Scale:  </label><code>[1,1,1]</code></div>
+         </div>
+         <div class='rightCol'>
+            <table>
+               <tr>
+                  <td>1</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+               </tr>
+               <tr>
+                  <td>0</td>
+                  <td>1</td>
+                  <td>0.014</td>
+                  <td>0</td>
+               </tr>
+               <tr>
+                  <td>0</td>
+                  <td>-0.014</td>
+                  <td>1</td>
+                  <td>0</td>
+               </tr>
+               <tr>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>0</td>
+                  <td>1</td>
+               </tr>
+            </table>
+         </div>
+         <div class='clear singleItem'>
+            <span class='namedNode'>rotate y mod</span><span class='modifier' id='modifier_6'>Modifier: <a id='node_2'></a><a id='parent_node_1' class='parent' href='#node_1'>&uarr;</a></span>
+            <div class='leftCol'>
+               <div class='transform'><label class='size'>Size: </label><br/><label class='opacity'>Opacity:  </label><code>1</code><br/><label class='origin'>Origin:  </label><code>[0.5,0.5]</code><br/><label class='position'>Position:  </label><br/><label class='rotation'>Rotation:  </label><code>[0,1.524,0]</code><br/><label class='rotation'>Skew:  </label><br/><label class='rotation'>Scale:  </label><code>[1,1,1]</code></div>
+            </div>
+            <div class='rightCol'>
+               <table>
+                  <tr>
+                     <td>0.047</td>
+                     <td>0</td>
+                     <td>-0.999</td>
+                     <td>0</td>
+                  </tr>
+                  <tr>
+                     <td>0</td>
+                     <td>1</td>
+                     <td>0</td>
+                     <td>0</td>
+                  </tr>
+                  <tr>
+                     <td>0.999</td>
+                     <td>0</td>
+                     <td>0.047</td>
+                     <td>0</td>
+                  </tr>
+                  <tr>
+                     <td>0</td>
+                     <td>0</td>
+                     <td>0</td>
+                     <td>1</td>
+                  </tr>
+               </table>
+            </div>
+            <div class='clear singleItem'>
+               <span class='namedNode'>rotate z mod</span><span class='modifier' id='modifier_7'>Modifier: <a id='node_3'></a><a id='parent_node_2' class='parent' href='#node_2'>&uarr;</a></span>
+               <div class='leftCol'>
+                  <div class='transform'><label class='size'>Size: </label><br/><label class='opacity'>Opacity:  </label><code>1</code><br/><label class='origin'>Origin:  </label><code>[0.5,0.5]</code><br/><label class='position'>Position:  </label><br/><label class='rotation'>Rotation:  </label><code>[0,0,2.67]</code><br/><label class='rotation'>Skew:  </label><br/><label class='rotation'>Scale:  </label><code>[1,1,1]</code></div>
+               </div>
+               <div class='rightCol'>
+                  <table>
+                     <tr>
+                        <td>-0.891</td>
+                        <td>0.454</td>
+                        <td>0</td>
+                        <td>0</td>
+                     </tr>
+                     <tr>
+                        <td>-0.454</td>
+                        <td>-0.891</td>
+                        <td>0</td>
+                        <td>0</td>
+                     </tr>
+                     <tr>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>1</td>
+                        <td>0</td>
+                     </tr>
+                     <tr>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>1</td>
+                     </tr>
+                  </table>
+               </div>
+               <div class='clear singleItem'>
+                  <span class='namedNode'>SubView</span>
+                  <ul>
+                     <li>
+                        <span class='modifier' id='modifier_1'>Modifier: <a id='node_4'></a><a id='parent_node_3' class='parent' href='#node_3'>&uarr;</a></span>
+                        <div class='leftCol'>
+                           <div class='transform'><label class='size'>Size: </label><br/><label class='opacity'>Opacity:  </label><code>1</code><br/><label class='origin'>Origin:  </label><code>[0.5,0.5]</code><br/><label class='position'>Position:  </label><br/><label class='rotation'>Rotation:  </label><br/><label class='rotation'>Skew:  </label><br/><label class='rotation'>Scale:  </label><code>[1,1,1]</code></div>
+                        </div>
+                        <div class='rightCol'>
+                           <table>
+                              <tr>
+                                 <td>1</td>
+                                 <td>0</td>
+                                 <td>0</td>
+                                 <td>0</td>
+                              </tr>
+                              <tr>
+                                 <td>0</td>
+                                 <td>1</td>
+                                 <td>0</td>
+                                 <td>0</td>
+                              </tr>
+                              <tr>
+                                 <td>0</td>
+                                 <td>0</td>
+                                 <td>1</td>
+                                 <td>0</td>
+                              </tr>
+                              <tr>
+                                 <td>0</td>
+                                 <td>0</td>
+                                 <td>0</td>
+                                 <td>1</td>
+                              </tr>
+                           </table>
+                        </div>
+                        <div class='clear'></div>
+                        <span class='surface' id='surface_0'>Surface: </span>
+                        <pre class='prettyprint lang-js'>{
     "id": 0,
     "name": "Front Surface",
     "options": {},
@@ -179,7 +427,7 @@
         400
     ],
     "properties": {
-        "backgroundColor": "#e7dd00",
+        "backgroundColor": "#89bbff",
         "webkitBackfaceVisibility": "visible",
         "opacity": 0.9
     },
@@ -187,26 +435,46 @@
     "classList": [
         "dot"
     ]
-}</pre></li><li><span class='modifier'>Modifier: <a id='node_4'></a><a id='parent_node_3' class='parent' href='#node_3'>&uarr;</a></span><div class='leftCol'><div class='transform'><label class='size'>Size: </label><br/><label class='opacity'>Opacity:  </label><code>1</code><br/><label class='origin'>Origin:  </label><code>[0.5,0.5]</code><br/><label class='position'>Position:  </label><br/><label class='rotation'>Rotation:  </label><code>[1.571,0,0]</code><br/><label class='rotation'>Skew:  </label><br/><label class='rotation'>Scale:  </label><code>[1,1,1]</code></div></div><div class='rightCol'><table><tr><td>1</td><td>0</td><td>0</td><td>0</td></tr><tr><td>0</td><td>0</td><td>1</td><td>0</td></tr><tr><td>0</td><td>-1</td><td>0</td><td>0</td></tr><tr><td>0</td><td>0</td><td>0</td><td>1</td></tr></table></div><div class='clear'></div><span class='surface' id='surface_1'>Surface: </span><pre class='prettyprint lang-js'>{
+}</pre>
+                     </li>
+                     <li>
+                        <span class='modifier' id='modifier_2'>Modifier: <a id='node_4'></a><a id='parent_node_3' class='parent' href='#node_3'>&uarr;</a></span>
+                        <div class='leftCol'>
+                           <div class='transform'><label class='size'>Size: </label><br/><label class='opacity'>Opacity:  </label><code>1</code><br/><label class='origin'>Origin:  </label><code>[0.5,0.5]</code><br/><label class='position'>Position:  </label><br/><label class='rotation'>Rotation:  </label><code>[1.571,0,0]</code><br/><label class='rotation'>Skew:  </label><br/><label class='rotation'>Scale:  </label><code>[1,1,1]</code></div>
+                        </div>
+                        <div class='rightCol'>
+                           <table>
+                              <tr>
+                                 <td>1</td>
+                                 <td>0</td>
+                                 <td>0</td>
+                                 <td>0</td>
+                              </tr>
+                              <tr>
+                                 <td>0</td>
+                                 <td>0</td>
+                                 <td>1</td>
+                                 <td>0</td>
+                              </tr>
+                              <tr>
+                                 <td>0</td>
+                                 <td>-1</td>
+                                 <td>0</td>
+                                 <td>0</td>
+                              </tr>
+                              <tr>
+                                 <td>0</td>
+                                 <td>0</td>
+                                 <td>0</td>
+                                 <td>1</td>
+                              </tr>
+                           </table>
+                        </div>
+                        <div class='clear'></div>
+                        <span class='surface' id='surface_1'>Surface: </span>
+                        <pre class='prettyprint lang-js'>{
     "id": 1,
     "name": "Back Surface",
-    "options": {},
-    "size": [
-        400,
-        400
-    ],
-    "properties": {
-        "backgroundColor": "#ea5d45",
-        "webkitBackfaceVisibility": "visible",
-        "opacity": 0.9
-    },
-    "content": "",
-    "classList": [
-        "dot"
-    ]
-}</pre></li><li><span class='modifier'>Modifier: <a id='node_4'></a><a id='parent_node_3' class='parent' href='#node_3'>&uarr;</a></span><div class='leftCol'><div class='transform'><label class='size'>Size: </label><br/><label class='opacity'>Opacity:  </label><code>1</code><br/><label class='origin'>Origin:  </label><code>[0.5,0.5]</code><br/><label class='position'>Position:  </label><br/><label class='rotation'>Rotation:  </label><code>[0,1.571,0]</code><br/><label class='rotation'>Skew:  </label><br/><label class='rotation'>Scale:  </label><code>[1,1,1]</code></div></div><div class='rightCol'><table><tr><td>0</td><td>0</td><td>-1</td><td>0</td></tr><tr><td>0</td><td>1</td><td>0</td><td>0</td></tr><tr><td>1</td><td>0</td><td>0</td><td>0</td></tr><tr><td>0</td><td>0</td><td>0</td><td>1</td></tr></table></div><div class='clear'></div><span class='surface' id='surface_2'>Surface: </span><pre class='prettyprint lang-js'>{
-    "id": 2,
-    "name": "Middle Surface",
     "options": {},
     "size": [
         400,
@@ -221,7 +489,69 @@
     "classList": [
         "dot"
     ]
-}</pre></li></ul></div></div></div></div></li></ul>
+}</pre>
+                     </li>
+                     <li>
+                        <span class='modifier' id='modifier_3'>Modifier: <a id='node_4'></a><a id='parent_node_3' class='parent' href='#node_3'>&uarr;</a></span>
+                        <div class='leftCol'>
+                           <div class='transform'><label class='size'>Size: </label><br/><label class='opacity'>Opacity:  </label><code>1</code><br/><label class='origin'>Origin:  </label><code>[0.5,0.5]</code><br/><label class='position'>Position:  </label><br/><label class='rotation'>Rotation:  </label><code>[0,1.571,0]</code><br/><label class='rotation'>Skew:  </label><br/><label class='rotation'>Scale:  </label><code>[1,1,1]</code></div>
+                        </div>
+                        <div class='rightCol'>
+                           <table>
+                              <tr>
+                                 <td>0</td>
+                                 <td>0</td>
+                                 <td>-1</td>
+                                 <td>0</td>
+                              </tr>
+                              <tr>
+                                 <td>0</td>
+                                 <td>1</td>
+                                 <td>0</td>
+                                 <td>0</td>
+                              </tr>
+                              <tr>
+                                 <td>1</td>
+                                 <td>0</td>
+                                 <td>0</td>
+                                 <td>0</td>
+                              </tr>
+                              <tr>
+                                 <td>0</td>
+                                 <td>0</td>
+                                 <td>0</td>
+                                 <td>1</td>
+                              </tr>
+                           </table>
+                        </div>
+                        <div class='clear'></div>
+                        <span class='surface' id='surface_2'>Surface: </span>
+                        <pre class='prettyprint lang-js'>{
+    "id": 2,
+    "name": "Middle Surface",
+    "options": {},
+    "size": [
+        400,
+        400
+    ],
+    "properties": {
+        "backgroundColor": "#89bbff",
+        "webkitBackfaceVisibility": "visible",
+        "opacity": 0.9
+    },
+    "content": "",
+    "classList": [
+        "dot"
+    ]
+}</pre>
+                     </li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+      </div>
+   </li>
+</ul>
 
 
 
@@ -345,6 +675,32 @@ fDom.forEach(fDom(".surface"), function(el){
         var id = this.id.replace("surface_", "");
         _insepectSurfaceInDom(id);
     }.bind(el));        
+});
+
+
+
+
+//wire up the interactiveInspector
+fDom.forEach(fDom(".modifier"), function(el){
+
+    //handle backlink animation back
+    el.addEventListener("click", function(event){
+        var id = this.id.replace("modifier_", "");
+        fDom(".interactiveModifier")[0].style.display = "block";
+        console.log(id);
+    }.bind(el));        
+});
+
+
+//TODO: Read in the values from the exisiting modifier, 
+//fire change event an value change
+fDom.forEach(fDom(".interactiveModifier input[type='number']"), function(num){
+   num.addEventListener("change", function(event){
+        
+        var inputs = num.parentElement.querySelectorAll("input[type='number']")
+        var values = [].map.call(inputs, function(i){return i.value});
+        console.log(values);
+    }.bind(num));  
 });
 
 
