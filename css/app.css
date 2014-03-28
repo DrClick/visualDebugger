@@ -1,14 +1,14 @@
 html {
-    background-color: #000;
+    background-color: #000!important
     color: #fff;
 } 
 .dot{
 	border-radius: 200px;
-	background-image: url(../assets/famous_symbol_transparent.png);
 	background-size: 300px 300px;
 	background-position: center center;
 	background-repeat: no-repeat;
 	text-align:center;
+	font-size:400px;
 }
 
 .inspected{

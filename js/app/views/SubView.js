@@ -21,10 +21,10 @@ define(function(require, exports, module) {
 
 		
 		var surface_front = new Surface({
-			classes: ['dot'],
+			classes: ['dot','icon-famous-logo'],
 			size: [400,400],
 			properties: {
-				backgroundColor: colors[Math.round(Math.random()*4)],
+				color: colors[Math.round(Math.random()*4)],
 				webkitBackfaceVisibility: "visible",
 				opacity: .9
 			},
@@ -37,10 +37,10 @@ define(function(require, exports, module) {
 
 
 		var surface_back = new Surface({
-			classes: ['dot'],
+			classes: ['dot','icon-famous-logo'],
 			size: [400,400],
 			properties: {
-				backgroundColor: colors[Math.round(Math.random()*4)],
+				color: colors[Math.round(Math.random()*4)],
 				webkitBackfaceVisibility: "visible",
 				opacity: .9
 			},
@@ -54,10 +54,10 @@ define(function(require, exports, module) {
 
 
 		var surface_middle = new Surface({
-			classes: ['dot'],
+			classes: ['dot','icon-famous-logo'],
 			size: [400,400],
 			properties: {
-				backgroundColor: colors[Math.round(Math.random()*4)],
+				color: colors[Math.round(Math.random()*4)],
 				webkitBackfaceVisibility: "visible",
 				opacity: .9
 			},

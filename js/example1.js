@@ -15,7 +15,7 @@ define(function(require, exports, module) {
 
 
         var mainContext = Engine.createContext({debug:true});
-        mainContext.setPerspective(1000);
+        mainContext.setPerspective(900);
         FamousDebugger.registerContext(mainContext);
 
         var modifier = new Modifier({

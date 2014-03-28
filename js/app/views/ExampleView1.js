@@ -6,7 +6,7 @@ define(function(require, exports, module) {
 	var Transform	= require("famous/core/Transform");
 	var Timer		= require("famous/utilities/Timer");
 
-	var SubView 	= require("app/views/SubView");
+	var FamousTile 	= require("app/views/FamousTile");
 
 	function ExampleView1 () {
     	View.apply(this, arguments);
@@ -21,30 +21,18 @@ define(function(require, exports, module) {
 	function _create(){
 		
 
+		var colors = ["rgba(137,232,144,1)", "#975db5", "#89bbff", "#ea5d45", "#e7dd00"];
 
-
-		for (var i = 10 - 1; i >= 0; i--) {
-			var surface = new Surface({
-				content: "<img src='../assets/famous_symbol_transparent.png'/>",
-				size: [300,200]
-			});
-
-			var x = Math.random()* 2 * window.innerWidth - window.innerWidth;
-			var y = Math.random()* 2 * window.innerHeight - window.innerHeight;
-			var z = Math.random()* 100 - 50;
-
-			var modifier = new Modifier({
-				transform: Transform.translate(x,y,z),
-				origin: [.5,.5],
-				name: "Super Awesome Modifier"
-			});
-
-
-			var subView = new SubView();
+		for (var i = 150 - 1; i >= 0; i--) {
+			Timer.setTimeout(function(){
+				var tile = new FamousTile();
 			
-			this._add(modifier).add(surface);
-			this._add(new Modifier()).add(subView);
+				this._add(tile);
+				tile.flyIn();
+			}.bind(this), i * 100);
 		}
+
+
 
 	}//end ceate
 
@@ -52,3 +40,6 @@ define(function(require, exports, module) {
 
 	module.exports = ExampleView1;
 });
+
+
+

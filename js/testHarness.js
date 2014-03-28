@@ -7,8 +7,6 @@ define(function(require, exports, module) {
 
     var chrome = chrome || require("famous/debug/ChromeMock");
 
-    alert("WTF");
-
     //state
     var _lastSelectedSurface = null;
     var _currentView = "renderTree";
@@ -21,11 +19,9 @@ define(function(require, exports, module) {
 
 
 
-    alert("WTF")
-
     function _handleMessagesFromInspectedPage(msg){
         if(msg["debug.updateRenderTree"]){
-            loadRenderTreeIntoPanel(JSON.parse(msg["debug.updateRenderTree"]));
+            _loadRenderTree(JSON.parse(msg["debug.updateRenderTree"]));
         }
         if(msg["debug.FPS"]){
             _updateFPS(msg["debug.FPS"]);
@@ -48,10 +44,10 @@ define(function(require, exports, module) {
 
  function getCurrentFamousRenderTree(){
         //execute a function in the context of the inspected page
-      ChromeExtensions.eval(inspectedWindow_getPanelContents, null, 
+        ChromeExtensions.eval(inspectedWindow_getPanelContents, null, 
         function(data){ 
-          loadRenderTreeIntoPanel(data.renderTree);
-      }.bind(this));
+            _loadRenderTree(data.renderTree);
+        }.bind(this));
   }
 
   function resumeEngineExecution(){
@@ -96,7 +92,7 @@ var inspectedWindow_stepEngine = function(windows, args){
 
 
     //Note: this call back executes in the devTool Panel context
-    function loadRenderTreeIntoPanel(renderTree){
+    function _loadRenderTree(renderTree){
         if(_currentView != "renderTree") return;
 
 
@@ -380,8 +376,24 @@ var inspectedWindow_stepEngine = function(windows, args){
     });
 
 
+
+
     //display the correct view
-    _displayViewPane
+    _currentView = "eventGraph"
+    _displayViewPane();
+
+
+    //execute a function in the context of the inspected page
+    ChromeExtensions.eval(function(){
+        return window.FamousDebugger;
+    }, null, 
+    function(data){
+        alert("here1");
+        _loadRenderTree(data.renderTree);
+        alert("here2");
+        _generateEventGraph(data.Events.eventGraph);
+        alert("here3");
+    }.bind(this));
 
 
     //wire up the hamburger
