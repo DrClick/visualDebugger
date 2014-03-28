@@ -43,7 +43,7 @@ define(function(require, exports, module) {
 
 		var modX = new Modifier({
 			origin:[.5,.5],
-			transform: Transform.rotate(.91,.38,0),
+			transform: Transform.rotate(0,Math.PI/4,0),
 			name: "rotate X mod"
 		});
 		var modY = new Modifier({

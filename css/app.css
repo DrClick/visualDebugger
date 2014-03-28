@@ -30,4 +30,6 @@ html {
 }
 .triangle{
 	background-image: url(/assets/triangle.png);
+	-webkit-backface-visibility: visible;
+    backface-visibility: visible;
 }

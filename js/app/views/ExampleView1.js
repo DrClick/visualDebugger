@@ -19,11 +19,8 @@ define(function(require, exports, module) {
 	};
 
 	function _create(){
-		
 
-		var colors = ["rgba(137,232,144,1)", "#975db5", "#89bbff", "#ea5d45", "#e7dd00"];
-
-		for (var i = 150 - 1; i >= 0; i--) {
+		for (var i = 200 - 1; i >= 0; i--) {
 			Timer.setTimeout(function(){
 				var tile = new FamousTile();
 			
@@ -31,9 +28,6 @@ define(function(require, exports, module) {
 				tile.flyIn();
 			}.bind(this), i * 100);
 		}
-
-
-
 	}//end ceate
 
 

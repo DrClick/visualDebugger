@@ -31,15 +31,8 @@ define(function(require, exports, module) {
 		var colors = ["rgba(137,232,144,1)", "#975db5", "#89bbff", "#ea5d45", "#e7dd00"];
 		
 		_setPosition.call(this);
-		this.state = {position:{x:null, y:null, z:null}, rotation:{x:null, y:null, z:null}, opacity: null, scale: null};
-		this.xPos 		= new Transitionable(this.finalX);
-		this.yPos 		= new Transitionable(this.finalY);
 		this.zPos 		= new Transitionable(this.options.baseZ);
-		this.scale 		= new Transitionable(this.options.atRestScale);
 		this.opacity 	= new Transitionable(.001);
-		this.rotateX	= new Transitionable(0);
-		this.rotateY	= new Transitionable(0);
-		this.rotateZ	= new Transitionable(0);
 
 
 		this.surface = new Surface({
@@ -50,12 +43,7 @@ define(function(require, exports, module) {
 			}
 		});
 
-		this.modifier = new Modifier({
-			origin: [.5,.5]
-		});
-
-		this._add(this.modifer).add(this.surface);
-
+		this._add(this.surface);
 
 		//fly out
 		this.transition = {curve: "easeIn", duration: 1000};
@@ -83,8 +71,6 @@ define(function(require, exports, module) {
 		if(this.zPos.get() >= this.options.maxZVisible){
 			
 			_setPosition.call(this);
-			this.xPos.set(this.finalX);
-			this.yPos.set(this.finalY);
 			this.opacity.set(.001);
 			this.zPos.set(this.options.baseZ);
 			this.flyIn();
@@ -95,7 +81,7 @@ define(function(require, exports, module) {
 		if(this.options.visible){
 			spec.push({
 					transform : 
-						Transform.translate(this.xPos.get(), this.yPos.get(), this.zPos.get()),
+						Transform.translate(this.finalX, this.finalY, this.zPos.get()),
 					target : this.surface.render(),
 					opacity: this.opacity.get(),
 					origin: [.5,.5]
