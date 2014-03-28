@@ -28,3 +28,6 @@ html {
 	padding-top: 70px;
 	font-size: 20px;
 }
+.triangle{
+	background-image: url(/assets/triangle.png);
+}

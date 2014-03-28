@@ -61,11 +61,17 @@ define(function(require, exports, module) {
 		this._add(originMod).add(modX).add(modY).add(modZ).add(magic8BallView);
 
 
-
+		var shake = false;
 		var numTicks = 0
+		window.addEventListener('shake', function(){
+			shake = true;
+			numTicks = 0;
+		});
 
 		//rotate it
 		Engine.on("prerender", function(){
+
+			if(!shake) return;
 
 			numTicks++;
 
@@ -80,16 +86,18 @@ define(function(require, exports, module) {
 				modZ.setTransform(Transform.rotateZ(rotateZ.get()));
 			}
 			else{
-				modX.setTransform(Transform.rotateX(0), {duration:5000});
-				modY.setTransform(Transform.rotateY(2*Math.PI), {duration:5000});
-				modZ.setTransform(Transform.rotateZ(0), {duration:5000});
-				originMod.setTransform(Transform.translate(0,0,20), {duration:2000});
+				modX.setTransform(Transform.rotateX(0), {duration:2000});
+				modY.setTransform(Transform.rotateY(2*Math.PI), {duration:2000});
+				modZ.setTransform(Transform.rotateZ(0), {duration:2000});
+				originMod.setTransform(Transform.translate(0,0,20), {duration:1000});
 
 			}
 
 
 		});
 
+
+		
 
 		_createMurkyEffect.call(this);
 
@@ -129,6 +137,8 @@ define(function(require, exports, module) {
 		};
 
 	}
+
+
 
 
 
